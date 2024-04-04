@@ -1,3 +1,5 @@
+include('../config-service/Tiltfile')
+
 gradlew = "./gradlew"
 expected_ref = "$EXPECTED_REF"
 if os.name == "nt":
