@@ -34,6 +34,10 @@ public class BookJsonTests {
                 .isEqualTo(book.createdDate().toString());
         assertThat(jsonContent).extractingJsonPathStringValue("@.lastModifiedDate")
                 .isEqualTo(book.lastModifiedDate().toString());
+        assertThat(jsonContent).extractingJsonPathStringValue("@.createdBy")
+                .isEqualTo(book.createdBy());
+        assertThat(jsonContent).extractingJsonPathStringValue("@.lastModifiedBy")
+                .isEqualTo(book.lastModifiedBy());
         assertThat(jsonContent).extractingJsonPathNumberValue("@.version")
                 .isEqualTo(book.version());
     }
@@ -55,6 +59,6 @@ public class BookJsonTests {
       """;
         assertThat(json.parse(content))
       .usingRecursiveComparison()
-                .isEqualTo(new Book(394L, "1234567890", "Title", "Author", 9.90,null, instant, instant,null, null, 21));
+                .isEqualTo(new Book(394L, "1234567890", "Title", "Author", 9.90,null, instant, instant,"jenny", "eline", 21));
     }
 }
