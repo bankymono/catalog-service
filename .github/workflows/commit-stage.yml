@@ -3,7 +3,7 @@ on: push
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: polarbookshop/catalog-service
+  IMAGE_NAME: bankymono/catalog-service
   VERSION: latest
 
 jobs:
@@ -47,7 +47,7 @@ jobs:
           kubeconform: latest
       - name: Validate Kubernetes manifests
         run: |
-          kustomize build k8s | kubeconform --strict -
+          kubeval --strict -d k8s
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
